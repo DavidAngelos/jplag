@@ -239,6 +239,10 @@
             <artifactId>generic</artifactId>
         </dependency>
         <dependency>
+            <groupId>edu.kit.ipd.jplag</groupId>
+            <artifactId>ipython</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20190722</version>
