@@ -100,8 +100,4 @@ public class IPythonLanguage implements jplag.Language {
 			}
 		}
 	}
-
-	public static void main(String[] args) {
-		debugWithFile(new IPythonParser(), "/home/thomas/orig2_js.ipynb", "/home/thomas/orig.ipynb");
-	}
 }

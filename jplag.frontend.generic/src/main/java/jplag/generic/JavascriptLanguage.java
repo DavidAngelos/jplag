@@ -42,9 +42,4 @@ public class JavascriptLanguage extends GenericLanguage {
     public int min_token_match() {
         return 8;
     }
-
-
-    public static void main(String[] args) {
-        debugWithFile(new JavascriptParser(), "/home/thomas/orig.ipynb");
-    }
 }

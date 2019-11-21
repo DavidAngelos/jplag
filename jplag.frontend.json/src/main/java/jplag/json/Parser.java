@@ -35,7 +35,7 @@ public class Parser extends jplag.Parser implements JsonTokenConstants {
     }
 
     public static void main(String args[]) {
-        String[] ffiles = {"/home/thomas/downloads/subs/top/Exercise1.json"};
+        String[] ffiles = {};
         Parser parser = new Parser();
         parser.setProgram(new jplag.StrippedProgram());
         jplag.Structure struct = parser.parse(null, ffiles);

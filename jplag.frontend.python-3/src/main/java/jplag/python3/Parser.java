@@ -46,7 +46,7 @@ public class Parser extends StreamParser implements Python3TokenConstants {
     }
 
     public static void main(String args[]) {
-        String[] ffiles = {"/home/thomas/software/codegra.de/manage.py"};
+        String[] ffiles = {};
         Parser parser = new Parser();
         parser.setProgram(new jplag.StrippedProgram());
         jplag.Structure struct = parser.parse(null, ffiles);
