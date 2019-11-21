@@ -244,6 +244,26 @@
 				<artifactId>chars</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
+			<dependency>
+				<groupId>edu.kit.ipd.jplag</groupId>
+				<artifactId>json</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.ipd.jplag</groupId>
+				<artifactId>generic</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.ipd.jplag</groupId>
+				<artifactId>ipython</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.ipd.jplag</groupId>
+				<artifactId>scala</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
 
 			<dependency>
 				<groupId>junit</groupId>

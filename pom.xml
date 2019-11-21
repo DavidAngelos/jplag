@@ -11,6 +11,7 @@
 		<module>jplag.parent</module>
 		<module>jplag.frontend-utils</module>
 		<module>jplag.frontend.chars</module>
+		<module>jplag.frontend.ipython</module>
 		<module>jplag.frontend.cpp</module>
 		<module>jplag.frontend.csharp-1.2</module>
 		<module>jplag.frontend.java-1.1exp</module>
@@ -21,6 +22,9 @@
 		<module>jplag.frontend.scheme</module>
 		<module>jplag.frontend.R</module>
 		<module>jplag.frontend.text</module>
+		<module>jplag.frontend.scala</module>
+		<module>jplag.frontend.json</module>
+		<module>jplag.frontend.generic</module>
 		<module>jplag.utils</module>
 		<module>jplag</module>
 	</modules>
@@ -29,6 +33,11 @@
 			<dependency>
 				<groupId>edu.kit.ipd.jplag</groupId>
 				<artifactId>java-1.5</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.ipd.jplag</groupId>
+				<artifactId>ipython</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 		</dependencies>

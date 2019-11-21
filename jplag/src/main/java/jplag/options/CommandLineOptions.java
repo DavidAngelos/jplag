@@ -68,6 +68,8 @@ public class CommandLineOptions extends Options {
     private boolean scanOption(String arg) throws jplag.ExitException {
         if (arg.equals("-s")) {
             this.read_subdirs = true;
+        } else if (arg.equals("-ignore-suffixes")) {
+            this.ignoreSuffixes = true;
         } else if (arg.equals("-external")) { // hidden option!
             System.out.println("External search activated!");
             this.externalSearch = true;
@@ -123,10 +125,13 @@ public class CommandLineOptions extends Options {
         } else if (arg.equals("-o") && i + 1 < args.length) {
             output_file = args[i + 1];
             i++;
+        } else if (arg.equals("-a") && i + 1 < args.length) {
+            useArchivalSubmissions = true;
+            archivalSubmissions = args[i + 1]; // will be validated in initializeSecondStep()
+            i++;
         } else if (arg.equals("-bc") && i + 1 < args.length) {
-			// Will be validated later as root_dir is not set yet
             useBasecode = true;
-            basecode = args[i + 1];
+            basecode = args[i + 1]; // will be validated in initializeSecondStep()
             i++;
         } else if (arg.equals("-d") && i + 1 < args.length) {
             // original directory - when used in the server environment.
@@ -176,7 +181,7 @@ public class CommandLineOptions extends Options {
             languageName = args[i + 1].toLowerCase();
             i++;
         } else if (arg.equals("-p") && i + 1 < args.length) {
-            String suffixstr = args[i + 1];          
+            String suffixstr = args[i + 1];
             if (suffixstr.equals("")) {
             	i++;
             }
@@ -195,6 +200,10 @@ public class CommandLineOptions extends Options {
                 suffixes_set = true;
                 i++;
             }
+        } else if (arg.equals("-progress") && i + 1 < args.length) {
+            this.showProgress = true;
+            this.progressToken = args[i + 1];
+            i++;
         } else if (arg.equals("-f") && i + 1 < args.length && this.exp) {
             this.filter = new jplag.filter.Filter(args[i + 1]);
             this.filtername = args[i + 1];
@@ -231,10 +240,10 @@ public class CommandLineOptions extends Options {
                 this.clusterType = MAX_CLUSTER;
             else if (tmp.equals("avr"))
                 this.clusterType = AVR_CLUSTER;
-            else 
+            else
                 throw new jplag.ExitException("Illegal clustertype: \"" + tmp
                         + "\"\nAvailable types are 'min', 'max' and 'avr'!");
-			
+
             System.out.println("Clustering activated; type: "
                     + args[i + 1].toUpperCase());
             i++;
@@ -322,7 +331,7 @@ public class CommandLineOptions extends Options {
             }
             this.title = args[i + 1];
             i++;
-        } else if (arg.equals("-c") && i + 2 < args.length){
+        } else if (arg.equals("-c") && i + 1 < args.length) {
             this.fileListMode = true;
             while (i + 1 < args.length){
                 this.fileList.add(args[i + 1]);
@@ -374,39 +383,75 @@ public class CommandLineOptions extends Options {
 			this.min_token_match = this.language.min_token_match();
 		if (!suffixes_set)
 			this.suffixes = this.language.suffixes();
-		checkBasecodeOption();
+
+        checkDirectories();
 	}
-	
+
+    private void checkDirectories() throws jplag.ExitException {
+        File f = new File(root_dir);
+
+        if (!f.exists() || !f.isDirectory()) {
+            throw new jplag.ExitException("\"" + root_dir + "\" does not exist or is not a"
+                    + " directory!",
+                    ExitException.BAD_PARAMETER);
+        }
+
+        if (useBasecode)
+            checkBasecodeOption();
+        if (useArchivalSubmissions)
+            checkArchivalSubmissionsOption();
+    }
+
     /**
      * This method checks whether the basecode directory value is valid
      */
     private void checkBasecodeOption() throws jplag.ExitException {
-        if (useBasecode) {
-            if (basecode == null || basecode.equals("")) {
-				throw new ExitException("Basecode option used but none " +
-						"specified!",ExitException.BAD_PARAMETER);
-            }
-            String baseC = root_dir + File.separator + basecode;
-            if (!(new File(root_dir)).exists()) {
-				throw new ExitException("Root directory \"" + root_dir
-						+ "\" doesn't exist!",ExitException.BAD_PARAMETER);
-            }
-            File f = new File(baseC);
-            if (!f.exists()) {	// Basecode dir doesn't exist.
-				throw new ExitException("Basecode directory \"" + baseC
-						+ "\" doesn't exist!",ExitException.BAD_PARAMETER);
-            }
-            if(sub_dir != null && sub_dir.length()!=0) {
-            	f = new File(baseC, sub_dir);
-            	if(!f.exists()) {
-            		throw new ExitException("Basecode directory doesn't contain"
-            				+ " the subdirectory \"" + sub_dir + "\"!",
-            				ExitException.BAD_PARAMETER);
-            	}
-            }
-            System.out.println("Basecode directory \"" + baseC
-            		+ "\" will be used");
+        if (basecode == null || basecode.equals("")) {
+            throw new ExitException("Basecode option used but none "
+                + "specified!", ExitException.BAD_PARAMETER);
         }
+
+        String baseC = basecode;
+        File f = new File(baseC);
+        if (!f.exists() || !f.isDirectory()) { // Basecode dir doesn't exist.
+			throw new ExitException("Basecode directory \"" + baseC
+					+ "\" doesn't exist!", ExitException.BAD_PARAMETER);
+        }
+        if(sub_dir != null && sub_dir.length()!=0) {
+        	f = new File(baseC, sub_dir);
+        	if(!f.exists()) {
+        		throw new ExitException("Basecode directory doesn't contain"
+        				+ " the subdirectory \"" + sub_dir + "\"!",
+        				ExitException.BAD_PARAMETER);
+        	}
+        }
+        System.out.println("Basecode directory \"" + baseC
+            + "\" will be used");
     }
 
+    private void checkArchivalSubmissionsOption() throws jplag.ExitException {
+        if (archivalSubmissions == null || archivalSubmissions.equals("")) {
+            throw new ExitException("Archival submissions option used but none specified!",
+                ExitException.BAD_PARAMETER);
+        }
+
+        File f = new File(archivalSubmissions);
+        if (!f.exists()) {
+            throw new ExitException("Archival submissions directory \"" + archivalSubmissions
+                + "\" doesn't exist!",
+                ExitException.BAD_PARAMETER);
+        }
+
+        if (sub_dir != null && sub_dir.length() != 0) {
+            f = new File(archivalSubmissions, sub_dir);
+            if (!f.exists()) {
+                throw new ExitException("Archival submissions directory doesn't contain"
+                    + " the subdirectory \"" + sub_dir + "\"!",
+                    ExitException.BAD_PARAMETER);
+            }
+        }
+
+        System.out.println("Archival submissions directory \"" + archivalSubmissions
+            + "\" will be used");
+    }
 }

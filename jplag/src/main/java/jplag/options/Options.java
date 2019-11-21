@@ -4,7 +4,7 @@
  * all type of options will be derivated from the abstract class Options. A simple implementation
  * is for exmaple a class that initialize commandline options.
  *
- * 
+ *
  */
 package jplag.options;
 
@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * @Author Emeric Kwemou 30.01.2005
- *  
+ *
  */
 public abstract class Options {
 	protected String langs = "jplag.options.util.messages_en";
@@ -41,6 +41,11 @@ public abstract class Options {
 			"char", "jplag.chars.Language",
 			"text", "jplag.text.Language",
 			"scheme", "jplag.scheme.Language",
+			"scala", "jplag.scala.Language",
+			"json", "jplag.json.Language",
+			"php", "jplag.generic.PhpLanguage",
+			"javascript", "jplag.generic.JavascriptLanguage",
+			"jupyter", "jplag.ipython.IPythonLanguage",
 			"r","jplag.R.Language",
 			};// @formatter:on
 
@@ -65,7 +70,7 @@ public abstract class Options {
 	public String root_dir = null;
 
 	public String original_dir = null;
-	
+
 	public String title = "";
 
 	public String output_file = null;
@@ -81,7 +86,7 @@ public abstract class Options {
 	public boolean store_percent = false; // is the number "store_matches"
 
 	// a percentage?
-	public static final int MAX_RESULT_PAIRS = 1000;
+	public static final int MAX_RESULT_PAIRS = 1000000;
 
 	public String result_dir = "result";
 
@@ -106,6 +111,8 @@ public abstract class Options {
 
 	public String basecode = "";
 
+	public String archivalSubmissions = "";
+
 	public String commandLine = "";
 
 	// "Ronald Kostoff" specials
@@ -116,6 +123,8 @@ public abstract class Options {
 	public boolean clustering = false;
 
 	public boolean useBasecode = false;
+
+	public boolean useArchivalSubmissions = false;
 
 	public String languageName = null;
 
@@ -131,12 +140,18 @@ public abstract class Options {
 
 	public SimilarityMatrix similarity = null;
 
+        public boolean ignoreSuffixes = false;
+
 	public jplag.Language language;
 
 	//compare list of files options
 	public boolean fileListMode = false;
 
 	public List<String> fileList = new ArrayList<String>();
+
+	public boolean showProgress = false;
+
+	public String progressToken = "";
 
 	// "FINAL" OPTIONS
 	public boolean debugParser = false;
@@ -191,7 +206,7 @@ public abstract class Options {
 		System.out.print(Program.name_long
 						+ ", Copyright (c) 2004-2017 KIT - IPD Tichy, Guido Malpohl, and others.\n"
 						+ "Usage: JPlag [ options ] <root-dir> [-c file1 file2 ...]\n"
-						+ " <root-dir>        The root-directory that contains all submissions.\n\n"
+						+ " <root-dir>      The root-directory that contains all submissions\n\n"
 						+ "options are:\n"
 						+ " -v[qlpd]        (Verbose)\n"
 						+ "                 q: (Quiet) no output\n"
@@ -212,7 +227,9 @@ public abstract class Options {
 						+ " -m <p>%         All matches with more than <p>% similarity will be saved.\n"
 						+ " -r <dir>        (Result) Name of directory in which the web pages will be\n"
 						+ "                 stored (default: result)\n"
-						+ " -bc <dir>       Name of the directory which contains the basecode (common framework)\n"
+						+ " -a <dir>        (Archival) Directory containing archived submissions, which\n"
+						+ "                 will be only compared against\n"
+						+ " -bc <dir>       Directory which contains the basecode (common framework)\n"
 						+ " -c [files]      Compare a list of files. Should be the last one.\n"
 						+ " -l <language>   (Language) Supported Languages:\n                 ");
 		for (int i = 0; i < languages.length - 2; i += 2)

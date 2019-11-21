@@ -61,11 +61,11 @@ public class Language implements jplag.Language {
 	}
 
 	public boolean usesIndex() {
-		return true;
+		return false;
 	}
 
 	public int noOfTokens() {
-		return jplag.chars.CharToken.numberOfTokens();
+		return CharToken.staticNmberOfTokens();
 	}
 
 	public String type2string(int type) {
