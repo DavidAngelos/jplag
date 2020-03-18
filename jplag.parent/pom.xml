@@ -23,6 +23,15 @@
 
 	<developers>
 		<developer>
+			<id>sw</id>
+			<name>Sebastian Weigelt</name>
+			<email>weigelt@kit.edu</email>
+			<url>https://ps.ipd.kit.edu/176_347.php</url>
+			<organization>IPD Tichy</organization>
+			<organizationUrl>https://ps.ipd.kit.edu/</organizationUrl>
+			<timezone>GMT+1</timezone>
+		</developer>
+		<developer>
 			<id>lama</id>
 			<name>Mathias Landhäußer</name>
 			<email>mathias.landhaeusser@kit.edu</email>
@@ -43,32 +52,32 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.source>1.7</project.build.source>
-		<project.build.target>1.7</project.build.target>
+		<project.build.source>11</project.build.source>
+		<project.build.target>11</project.build.target>
 		<project.build.optimize>true</project.build.optimize>
 	</properties>
 
 	<repositories>
 		<repository>
 			<id>ipdNexus</id>
-			<name>Recaa Repository</name>
-			<url>http://bob.ipd.kit.edu/nexus/content/repositories/public/</url>
+			<name>IPD-Nexus-Public</name>
+			<url>http://bob.ipd.kit.edu/nexus/repository/maven-public-all</url>
 		</repository>
 	</repositories>
 
 	<distributionManagement>
 		<!-- use the following if you're not using a snapshot version. -->
 		<repository>
-			<id>ipdNexus-repo</id>
+			<id>ipdNexus-jplag-releases</id>
 			<name>IPD-Tichy-Releases</name>
-			<url>http://bob.ipd.kit.edu/nexus/content/repositories/releases</url>
+			<url>http://bob.ipd.kit.edu/nexus/repository/maven-jplag-releases</url>
 			<layout>default</layout>
 		</repository>
 		<!-- use the following if you ARE using a snapshot version. -->
 		<snapshotRepository>
-			<id>ipdNexus-snapshots</id>
+			<id>ipdNexus-jplag-snapshots</id>
 			<name>IPD-Tichy-Snapshots</name>
-			<url>http://bob.ipd.kit.edu/nexus/content/repositories/snapshots</url>
+			<url>http://bob.ipd.kit.edu/nexus/repository/maven-jplag-snapshots</url>
 			<layout>default</layout>
 		</snapshotRepository>
 	</distributionManagement>
@@ -212,6 +221,11 @@
 			<dependency>
 				<groupId>edu.kit.ipd.jplag</groupId>
 				<artifactId>java-1.7</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.ipd.jplag</groupId>
+				<artifactId>java-1.13</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
