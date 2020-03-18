@@ -10,13 +10,12 @@
         <version>0.3-SNAPSHOT</version>
         <relativePath>../jplag.parent/pom.xml</relativePath>
     </parent>
-
     <repositories>
-        <repository>
-            <id>ipdNexus</id>
-            <name>Recaa Repository</name>
-            <url>http://bob.ipd.kit.edu/nexus/content/repositories/public/</url>
-        </repository>
+	<repository>
+	   <id>ipdNexus</id>
+	   <name>IPD-Nexus-Public</name>
+	   <url>http://bob.ipd.kit.edu/nexus/repository/maven-public-all</url>
+	</repository>
     </repositories>
 
     <build>
@@ -205,6 +204,10 @@
         <dependency>
             <groupId>edu.kit.ipd.jplag</groupId>
             <artifactId>java-1.7</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>edu.kit.ipd.jplag</groupId>
+            <artifactId>java-1.13</artifactId>
         </dependency>
         <dependency>
             <groupId>edu.kit.ipd.jplag</groupId>
