@@ -281,15 +281,6 @@ class JavaParserAdapter {
 public class Parser  extends jplag.Parser {
 	private jplag.Structure struct;
 
-	public static void main(String[] args) {
-		var parser = new Parser();
-		for (Token token : parser.parse(new File("/home/thomas/software/jplag/jplag.frontend.java-1.13/src/main/java/jplag/java113/"), new String[]{"Parser.java"}).tokens) {
-			if (token != null) {
-				System.out.println(token.getLine() + ":" + token.getColumn() + "\t" + token.toString() + " (" + token.getLength() + ")");
-			}
-		}
-	}
-
 	jplag.Structure parse(File dir, String[] files) {
 		struct = new jplag.Structure();
 		this.errors = 0;
