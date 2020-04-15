@@ -59,19 +59,19 @@ public class Report implements TokenConstants {
 
         writeIndex((clustering != null));
 
-        if (this.program.use_clustering())
-            writeClusters(clustering);
-
-        try {
-            copyFixedFiles(f);
-            writeMatches(avgmatches);
-            if (maxmatches != null)
-                writeMatches(maxmatches);
-            if (minmatches != null)
-                writeMatches(minmatches);
-        } catch (Exception ignored) {
-            // OK
-        }
+//        if (this.program.use_clustering())
+//            writeClusters(clustering);
+//
+//        try {
+//            copyFixedFiles(f);
+//            writeMatches(avgmatches);
+//            if (maxmatches != null)
+//                writeMatches(maxmatches);
+//            if (minmatches != null)
+//                writeMatches(minmatches);
+//        } catch (Exception ignored) {
+//            // OK
+//        }
     }
 
     // open file
@@ -460,18 +460,18 @@ public class Report implements TokenConstants {
     }
 
     private int writeIndex(boolean includeClusterLink) throws jplag.ExitException {
-        HTMLFile f = openHTMLFile(root, "index.html");
+//        HTMLFile f = openHTMLFile(root, "index.html");
 
-        writeIndexBegin(f, msg.getString("Report.Search_Results"));
+//        writeIndexBegin(f, msg.getString("Report.Search_Results"));
 
-        writeDistribution(f);
+//        writeDistribution(f);
 
         String csvfile = "matches_avg.csv";
-        writeLinksToMatches(f, avgmatches, new MatchesHelper() {
-            public float getPercent(AllMatches matches) {
-                return matches.percent();
-            }
-        }, "<H4>" + msg.getString("Report.MatchesAvg"), csvfile);
+//        writeLinksToMatches(f, avgmatches, new MatchesHelper() {
+//            public float getPercent(AllMatches matches) {
+//                return matches.percent();
+//            }
+//        }, "<H4>" + msg.getString("Report.MatchesAvg"), csvfile);
 
         writeMatchesCSV(root, csvfile, avgmatches,
                 new MatchesHelper() {
@@ -480,16 +480,17 @@ public class Report implements TokenConstants {
                     }
                 }
         );
+
         writeBetterMatchesCSV(root, "computer_matches.csv", avgmatches);
-        writeJsonMatches(root, "computer_matches.json", avgmatches);
+//        writeJsonMatches(root, "computer_matches.json", avgmatches);
 
         if (minmatches != null) {
             csvfile = "matches_min.csv";
-            writeLinksToMatches(f, minmatches, new MatchesHelper() {
-                public float getPercent(AllMatches matches) {
-                    return matches.percentMinAB();
-                }
-            }, "<HR><H4>" + msg.getString("Report.MatchesMin"), csvfile);
+//            writeLinksToMatches(f, minmatches, new MatchesHelper() {
+//                public float getPercent(AllMatches matches) {
+//                    return matches.percentMinAB();
+//                }
+//            }, "<HR><H4>" + msg.getString("Report.MatchesMin"), csvfile);
 
             writeMatchesCSV(root, csvfile, avgmatches,
                     new MatchesHelper() {
@@ -503,12 +504,12 @@ public class Report implements TokenConstants {
 
         if (maxmatches != null) {
             csvfile = "matches_max.csv";
-            writeLinksToMatches(f, maxmatches, new MatchesHelper() {
-                public float getPercent(AllMatches matches) {
-                    return matches.percentMaxAB();
-                }
-            }, "<HR><H4>" + msg.getString("Report.MatchesMax"), csvfile);
-
+//            writeLinksToMatches(f, maxmatches, new MatchesHelper() {
+//                public float getPercent(AllMatches matches) {
+//                    return matches.percentMaxAB();
+//                }
+//            }, "<HR><H4>" + msg.getString("Report.MatchesMax"), csvfile);
+//
             writeMatchesCSV(root, csvfile, avgmatches,
                     new MatchesHelper() {
                         public float getPercent(AllMatches matches) {
@@ -517,30 +518,30 @@ public class Report implements TokenConstants {
                     }
             );
         }
+//
+//
+//        if (includeClusterLink) {
+//            f.println("<HR><H4><A HREF=\"cluster.html\">" + msg.getString("Report.Clustering_Results") + "</A></H4>");
+//        }
+//
+//        writeIndexEnd(f);
+//
+//        f.close();
+//
+//        int size = f.bytesWritten();
+//
+//        // a few infos are saved into a textfile- used in the server environment
+//        if (this.program.get_original_dir() != null) {
+//            f = openHTMLFile(root, "info.txt");
+//            f.println("directory" + "\t" + program.get_original_dir()
+//                    + (program.get_sub_dir() != null ? File.separator + "*" + File.separator + program.get_sub_dir() : ""));
+//            f.println("language" + "\t" + language.name());
+//            f.println("submissions" + "\t" + program.validSubmissions());
+//            f.println("errors" + "\t" + program.getErrors());
+//            f.close();
+//        }
 
-
-        if (includeClusterLink) {
-            f.println("<HR><H4><A HREF=\"cluster.html\">" + msg.getString("Report.Clustering_Results") + "</A></H4>");
-        }
-
-        writeIndexEnd(f);
-
-        f.close();
-
-        int size = f.bytesWritten();
-
-        // a few infos are saved into a textfile- used in the server environment
-        if (this.program.get_original_dir() != null) {
-            f = openHTMLFile(root, "info.txt");
-            f.println("directory" + "\t" + program.get_original_dir()
-                    + (program.get_sub_dir() != null ? File.separator + "*" + File.separator + program.get_sub_dir() : ""));
-            f.println("language" + "\t" + language.name());
-            f.println("submissions" + "\t" + program.validSubmissions());
-            f.println("errors" + "\t" + program.getErrors());
-            f.close();
-        }
-
-        return size + f.bytesWritten();
+        return 0;
     }
 
     public void writeIndexBegin(HTMLFile f, String title) {
