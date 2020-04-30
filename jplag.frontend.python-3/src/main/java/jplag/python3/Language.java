@@ -31,7 +31,7 @@ public class Language implements jplag.Language {
     }
 
     public int min_token_match() {
-        return 12;
+        return 8;
     }
 
     public jplag.Structure parse(File dir, String[] files) {
