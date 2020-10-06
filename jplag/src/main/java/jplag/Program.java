@@ -429,7 +429,7 @@ public class Program implements ProgramI {
                 }
 
                 result.addElement(new Submission(subm_dir.getName(), file_dir, options.read_subdirs, this,
-                    get_language(), type)); // -s option
+                    get_language(), type, false)); // -s option
             } else
                 throw new ExitException("Cannot find directory: " + file_dir.toString());
         }
@@ -463,8 +463,14 @@ public class Program implements ProgramI {
         File file_dir = ((options.sub_dir == null) ? // - S option
             basecode_dir : new File(basecode_dir, options.sub_dir));
 
-        return new Submission(basecode_dir.getName(), file_dir, options.read_subdirs, this,
-            get_language(), SubmissionType.BASECODE);
+        return new Submission(basecode_dir.getName(),
+                file_dir,
+                options.read_subdirs,
+                this,
+                get_language(),
+                SubmissionType.BASECODE,
+                true
+        );
     }
 
     /**
@@ -494,7 +500,7 @@ public class Program implements ProgramI {
                     : new File(subm_dir, options.sub_dir));
             if (file_dir != null && file_dir.isDirectory())
                 submissions.addElement(new Submission(subm_dir.getName(), file_dir, options.read_subdirs, this,
-                    this.get_language(), SubmissionType.REGULAR)); // -s option
+                    this.get_language(), SubmissionType.REGULAR, false)); // -s option
             else if (options.sub_dir == null) {
                 throw new jplag.ExitException(options.root_dir + " is not a directory!");
             }
