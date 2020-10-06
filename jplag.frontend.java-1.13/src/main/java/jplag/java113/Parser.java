@@ -263,9 +263,9 @@ class JavaParserAdapter {
 		try {
 			compilationUnit = StaticJavaParser.parse(file);
 		} catch (FileNotFoundException | ParseProblemException e) {
+			System.err.println("Error occurred when parsing '" + filename + "'");
 			e.printStackTrace();
 			return 1;
-
 		}
 
 		try {
