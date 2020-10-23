@@ -189,8 +189,7 @@ public class CommandLineOptions extends Options {
                 Vector<String> vsuffies = new Vector<String>();
                 StringTokenizer st = new StringTokenizer(suffixstr, ",");
                 while (st.hasMoreTokens()) {
-    				suffixstr = st.nextToken();
-    				suffixstr.trim();
+    				suffixstr = st.nextToken().trim();
                     if (suffixstr.equals(""))
                         continue;
                     vsuffies.addElement(suffixstr);
