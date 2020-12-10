@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="target" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:frontend-utils:0.0.3-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: antlr:antlr:2.7.7" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains:annotations-java5:17.0.0" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:java-1.1exp:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:utils:0.0.3-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:text:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:java-1.5:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:java-1.7:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.abego.treelayout:org.abego.treelayout.core:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4-annotations:4.2" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:java-1.13:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: com.github.javaparser:javaparser-core:3.15.14" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:python-3:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:csharp-1.2:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:cpp:0.0.2-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:scheme:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:R:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:chars:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:scala:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.12.6" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:scalameta_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:common_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:semanticdb_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.thesamet.scalapb:scalapb-runtime_2.12:0.8.0-RC1" level="project" />
+    <orderEntry type="library" name="Maven: com.thesamet.scalapb:lenses_2.12:0.8.0-RC1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.5.1" level="project" />
+    <orderEntry type="library" name="Maven: com.lihaoyi:sourcecode_2.12:0.1.4" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:dialects_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:parsers_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:tokens_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:quasiquotes_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:tokenizers_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.lihaoyi:fastparse_2.12:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.lihaoyi:fastparse-utils_2.12:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:transversers_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:trees_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:inputs_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.scalameta:io_2.12:4.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.lihaoyi:pprint_2.12:0.5.3" level="project" />
+    <orderEntry type="library" name="Maven: com.lihaoyi:fansi_2.12:0.2.5" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:json:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:generic:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: edu.kit.ipd.jplag:ipython:0.0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20190722" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+  </component>
+</module>
