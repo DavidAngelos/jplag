@@ -1,7 +1,7 @@
 package jplag.generic;
 
 public class JavascriptParser extends GenericParser {
-    public static String command = "javascript_to_jplag_parser";
+    public static String command = "/mnt/c/Users/davan/Downloads/code-jplag/run.sh";
 
     @Override
     protected GenericToken makeToken(int type, String file, int line, int column, int length) {
